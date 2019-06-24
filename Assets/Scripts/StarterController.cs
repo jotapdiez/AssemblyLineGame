@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class StarterController : MonoBehaviour
 {
-    public GameObject Gold;
-    public GameObject Iron;
-    public GameObject Aluminum;
-    public GameObject Copper;
-    public GameObject Diamond;
 
+    public GameObject resource;
+    public PrimitiveResource resourceType;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnItems", 1.0f, 1.0f);
+        InvokeRepeating("SpawnItems", 0.0f, 2.0f);
     }
-    
+
     void SpawnItems()
     {
-        
-        Instantiate(Gold, transform.position + new Vector3(0,-0.75f,0), Quaternion.identity);
+
+        GameObject go = Instantiate(resource, transform.position + Vector3.forward, Quaternion.Euler(transform.eulerAngles));
+        // go.transform.position = go.transform.position + new Vector3(0f, 0.45f, 0f);
+        go.GetComponent<Resource>().setResourceType(resourceType);
     }
 
     private void OnMouseDown()

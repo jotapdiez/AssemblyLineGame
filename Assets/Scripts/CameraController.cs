@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            //right click was pressed    
+            //right click was pressed
             mouseOrigin = Input.mousePosition;
             isPanning = true;
         }
