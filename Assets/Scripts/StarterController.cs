@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class StarterController : MonoBehaviour
 {
+    // public GameObject panel;
+
+    public bool active = true;
 
     public GameObject resource;
-    public PrimitiveResource resourceType;
+    public PrimitiveResourceType resourceType;
 
     // Start is called before the first frame update
     void Start()
@@ -16,14 +19,22 @@ public class StarterController : MonoBehaviour
 
     void SpawnItems()
     {
+        if (active){
+            GameObject go = Instantiate(resource, transform.position + Vector3.forward, Quaternion.Euler(transform.eulerAngles));
+            // go.transform.position = go.transform.position + new Vector3(0f, 0.45f, 0f);
+            go.GetComponent<Resource>().setResourceType(resourceType);
+        }
+    }
 
-        GameObject go = Instantiate(resource, transform.position + Vector3.forward, Quaternion.Euler(transform.eulerAngles));
-        // go.transform.position = go.transform.position + new Vector3(0f, 0.45f, 0f);
-        go.GetComponent<Resource>().setResourceType(resourceType);
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        // Debug.Log("OnTriggerStay2D::name= " + other.name);
+        other.transform.Translate(Vector3.down * 2f * Time.deltaTime);
     }
 
     private void OnMouseDown()
     {
-        print("Clicked on starter");
+        // panel.SetActive(true);
+        // panel.transform.position = transform.position;
     }
 }

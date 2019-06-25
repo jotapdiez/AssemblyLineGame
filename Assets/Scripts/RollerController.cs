@@ -15,15 +15,28 @@ public class RollerController : MonoBehaviour
     {
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D target)
     {
-        // Debug.Log("OnTriggerStay2D::name= " + other.name);
-        // other.transform.Translate(Vector3.down * speed * Time.deltaTime);
+        // Debug.Log("OnTriggerStay2D::name= " + target.name);
+        // target.transform.Translate(Vector3.down * speed * Time.deltaTime);
+
+        // // Vector3 size = GetComponent<Renderer>().bounds.size;
+        // Vector3 center = GetComponent<Renderer>().bounds.center;
+
+        // float dist = Vector3.Distance(center, target.transform.position);
+
+        // if (dist < 5){
+        //     float rollerAngle = transform.eulerAngles.z;
+        //     if (rollerAngle != target.transform.eulerAngles.z){
+        //         Vector3 eulerRotation = new Vector3(target.transform.eulerAngles.x, target.transform.eulerAngles.y, rollerAngle);
+        //         target.transform.rotation = Quaternion.Euler(eulerRotation);
+        //     }
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D target)
     {
-        float rollerAngle = transform.eulerAngles.z;
+        // float rollerAngle = transform.eulerAngles.z;
         // Debug.Log("RollerAngle: " + rollerAngle);
         // if (target.transform.eulerAngles.z == rollerAngle)
         // {
@@ -50,9 +63,12 @@ public class RollerController : MonoBehaviour
         // }
 
         // if (rotateTarget){
+        // }
+        float rollerAngle = transform.eulerAngles.z;
+        if (rollerAngle != target.transform.eulerAngles.z){
             Vector3 eulerRotation = new Vector3(target.transform.eulerAngles.x, target.transform.eulerAngles.y, rollerAngle);
             target.transform.rotation = Quaternion.Euler(eulerRotation);
-        // }
+        }
     }
 
 }

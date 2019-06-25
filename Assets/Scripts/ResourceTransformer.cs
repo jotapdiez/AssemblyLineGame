@@ -5,7 +5,7 @@ public class ResourceTransformer : MonoBehaviour
 {
     public bool debug = false;
 
-    private List<PrimitiveResource> collected = new List<PrimitiveResource>();
+    private List<PrimitiveResourceType> collected = new List<PrimitiveResourceType>();
 
     public GameObject generated;
 
@@ -21,7 +21,7 @@ public class ResourceTransformer : MonoBehaviour
             return;
         }
 
-        PrimitiveResource type = collected[0];
+        PrimitiveResourceType type = collected[0];
 
         collected.RemoveAt(0);
         float rollerAngle = transform.eulerAngles.z;
@@ -30,7 +30,7 @@ public class ResourceTransformer : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D target)
     {
-        PrimitiveResource sourceType = target.gameObject.GetComponent<Resource>().GetResourceType();
+        PrimitiveResourceType sourceType = target.gameObject.GetComponent<Resource>().GetResourceType();
         collected.Add(sourceType);
         Destroy(target.gameObject);
     }

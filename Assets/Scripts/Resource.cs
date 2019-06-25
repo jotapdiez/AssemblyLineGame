@@ -2,18 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PrimitiveResource {
-    GOLD=1,
-    DIAMOND=2,
-    COPPER=3,
-    ALUMINIUM=4,
-    IRON=5
-}
-
 public class Resource : MonoBehaviour
 {
-    private PrimitiveResource type = 0; //1=Gold, 2=Diamond, 3=Copper
-
+    private PrimitiveResourceType type = 0;
     public float speed = 2f;
 
     void Start()
@@ -21,20 +12,20 @@ public class Resource : MonoBehaviour
         // GetComponent<SpriteRenderer>().color =new Color(0.60f, 0.85f, 0.91f, 1);
     }
 
-    public void setResourceType(PrimitiveResource type){
+    public void setResourceType(PrimitiveResourceType type){
         this.type = type;
 
         Color color = Color.black;
 
-        if (type == PrimitiveResource.GOLD){
+        if (type == PrimitiveResourceType.GOLD){
             color = new Color(0.99f, 0.94f, 0f, 1);
-        }else if (type == PrimitiveResource.DIAMOND){
+        }else if (type == PrimitiveResourceType.DIAMOND){
             color = new Color(0.60f, 0.85f, 0.91f, 1);
-        }else if (type == PrimitiveResource.COPPER){
+        }else if (type == PrimitiveResourceType.COPPER){
             color = new Color(0.72f, 0.39f, 0.23f, 1);
-        }else if (type == PrimitiveResource.ALUMINIUM){
+        }else if (type == PrimitiveResourceType.ALUMINIUM){
             color = new Color(1f, 1f, 1f, 1);
-        }else if (type == PrimitiveResource.IRON){
+        }else if (type == PrimitiveResourceType.IRON){
             color = new Color(0.81f, 0.81f, 0.81f, 1);
         }
 
@@ -45,7 +36,7 @@ public class Resource : MonoBehaviour
         }
     }
 
-    public PrimitiveResource GetResourceType(){
+    public PrimitiveResourceType GetResourceType(){
         return type;
     }
 

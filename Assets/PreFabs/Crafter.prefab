@@ -44,14 +44,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2380456846352450644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43f3054eae13fd40bbb13239dd56f07, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ee38bc9309fa1d469a0d73681ba42a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  sourceMaterials:
-  - type: 0
-    obj: {fileID: 0}
-    count: 0
+  requirements: []
   generated: {fileID: 0}
 --- !u!61 &1318564307255673898
 BoxCollider2D:
