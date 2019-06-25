@@ -6,7 +6,7 @@ public class RollerController : MonoBehaviour
     public float speed = 2.0f;
     private float startTime;
     private float journeyLength;
-    private bool started = false;
+    // private bool started = false;
 
     public Transform startMarker;
     public Transform endMarker;

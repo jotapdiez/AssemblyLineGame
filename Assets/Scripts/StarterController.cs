@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarterController : MonoBehaviour
+public class StarterController : Element
 {
-    // public GameObject panel;
-
-    public bool active = true;
+    // public GameObject menu;
 
     public GameObject resource;
     public PrimitiveResourceType resourceType;
+
+    [RangeAttribute(1,5)]
+    public int SpawnCount = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +20,11 @@ public class StarterController : MonoBehaviour
 
     void SpawnItems()
     {
-        if (active){
-            GameObject go = Instantiate(resource, transform.position + Vector3.forward, Quaternion.Euler(transform.eulerAngles));
-            // go.transform.position = go.transform.position + new Vector3(0f, 0.45f, 0f);
-            go.GetComponent<Resource>().setResourceType(resourceType);
+        if (isActive()){
+            for (int i = 0 ; i<SpawnCount ; ++i){
+                GameObject go = Instantiate(resource, transform.position + Vector3.forward, Quaternion.Euler(transform.eulerAngles));
+                go.GetComponent<Resource>().setResourceType(resourceType);
+            }
         }
     }
 
@@ -34,7 +36,16 @@ public class StarterController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // panel.SetActive(true);
-        // panel.transform.position = transform.position;
+        if (Input.GetMouseButtonDown(0))
+            RotateCCW();
+        // if (Input.GetMouseButtonDown(1))
+        //     RotateCW();
+        // GameObject go = Instantiate(menu, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
+        // GameObject go = Instantiate(menu, transform.position, Quaternion.identity);
+        // go.SetActive(true);
+        // go.transform.position = transform.position;
+
+        // menu.SetActive(true);
+        // menu.transform.position = transform.position;
     }
 }
