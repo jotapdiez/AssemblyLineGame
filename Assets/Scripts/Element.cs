@@ -15,6 +15,10 @@ public class Element : MonoBehaviour
         transform.Rotate(new Vector3(0, 0, 1), -90f);
     }
 
+    public void ToggleActive(){
+        active = !active;
+    }
+
     public void Activate(){
         active = true;
     }

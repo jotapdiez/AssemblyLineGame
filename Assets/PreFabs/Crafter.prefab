@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  requirements: []
+  requirements:
+  - obj: {fileID: 0}
+    count: 0
   generated: {fileID: 0}
 --- !u!61 &1318564307255673898
 BoxCollider2D:

@@ -25,7 +25,7 @@ public class Splitter : MonoBehaviour
 
         ++nextOutput;
 
-        if (nextOutput == outputs.Count){ //-1 because index based
+        if (nextOutput == outputs.Count){
             nextOutput = 0;
         }
     }

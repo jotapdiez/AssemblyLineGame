@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class StarterController : Element
 {
-    // public GameObject menu;
+    public GameObject menu;
 
     public GameObject resource;
-    public PrimitiveResourceType resourceType;
+
+    private PrimitiveResourceType resourceType;
 
     [RangeAttribute(1,5)]
     public int SpawnCount = 1;
@@ -15,6 +16,7 @@ public class StarterController : Element
     // Start is called before the first frame update
     void Start()
     {
+        resourceType = PrimitiveResourceType.GOLD;
         InvokeRepeating("SpawnItems", 0.0f, 2.0f);
     }
 
@@ -28,6 +30,10 @@ public class StarterController : Element
         }
     }
 
+    public void setResourceType(PrimitiveResourceType resourceType){
+        this.resourceType = resourceType;
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         // Debug.Log("OnTriggerStay2D::name= " + other.name);
@@ -36,16 +42,14 @@ public class StarterController : Element
 
     private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
-            RotateCCW();
-        // if (Input.GetMouseButtonDown(1))
-        //     RotateCW();
-        // GameObject go = Instantiate(menu, transform.position, Quaternion.identity, GameObject.Find("Canvas").transform);
-        // GameObject go = Instantiate(menu, transform.position, Quaternion.identity);
-        // go.SetActive(true);
-        // go.transform.position = transform.position;
+        menu.SetActive(true);
+        menu.transform.position = transform.position;
+    }
 
-        // menu.SetActive(true);
-        // menu.transform.position = transform.position;
+    public void increaseSpawnCount(){
+        ++SpawnCount;
+    }
+    public void decreaseSpawnCount(){
+        --SpawnCount;
     }
 }
